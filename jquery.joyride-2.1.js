@@ -397,10 +397,13 @@
       },
 
       set_target : function () {
-        var cl = settings.$li.attr('data-class'),
+        var sel = settings.$li.attr('data-selector'),
+            cl = settings.$li.attr('data-class'),
             id = settings.$li.attr('data-id'),
             $sel = function () {
-              if (id) {
+              if (sel) {
+                return $(sel);
+              } if (id) {
                 return $(settings.document.getElementById(id));
               } else if (cl) {
                 return $('.' + cl).filter(":visible").first();
